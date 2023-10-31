@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast'
 import Loader from '../Loader';
-
+import login from '../../../actions/auth';
 
 function Login() {
   const [email, setEmail] = useState("");
