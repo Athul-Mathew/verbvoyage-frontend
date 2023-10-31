@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { getLocal } from '../../../actions/auth';
-
+import { wsApiUrl } from '../../../utils/Config';
+import { BACKEND_BASE_URL } from '../../../utils/Config';
 function MentorComponent() {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
@@ -18,7 +19,7 @@ function MentorComponent() {
   let room_id = `chat_${credential}`;
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/chat/users/${mentorId}/`)
+    axios.get(`${BACKEND_BASE_URL}/api/chat/users/${mentorId}/`)
       .then(response => setUsers(response.data))
       .catch(error => console.error('Error fetching users:', error));
   }, [mentorId]);
@@ -40,8 +41,8 @@ function MentorComponent() {
     const fetchMessages = async () => {
       try {
         const response = selectedUser
-          ? await axios.get(`http://localhost:8000/api/chat/get_messages/${mentorId}/${selectedUser.id}/`)
-          : await axios.get('http://localhost:8000/api/chat/messages/');
+          ? await axios.get(`${BACKEND_BASE_URL}/api/chat/get_messages/${mentorId}/${selectedUser.id}/`)
+          : await axios.get(`${BACKEND_BASE_URL}/api/chat/messages/`);
 
         setMessages(response.data);
       } catch (error) {
@@ -55,7 +56,7 @@ function MentorComponent() {
   useEffect(() => {
     const createSocket = async () => {
       try {
-        const request = new WebSocket(`ws://localhost:8000/ws/chat/${credential}/`);
+        const request = new WebSocket(`${wsApiUrl}/ws/chat/${credential}/`);
 
         request.onopen = () => {
           setSocket(request);

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Loader from '../Loader';
 import { getLocal } from '../../../actions/auth';
 import jwtDecode from 'jwt-decode';
-
+import { BACKEND_BASE_URL } from '../../../utils/Config';
 function MentorList() {
   const [mentors, setMentors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +12,7 @@ function MentorList() {
   const decoded = jwtDecode(token);
 console.log(mentors)
   useEffect(() => {
-    fetch('http://localhost:8000/api/mentors/mentors/')
+    fetch(`${BACKEND_BASE_URL}/api/mentors/mentors/`)
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data.mentors)) {

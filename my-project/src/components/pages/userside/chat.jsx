@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { getLocal } from '../../../actions/auth';
+import { BACKEND_BASE_URL } from '../../../utils/Config';
+import { wsApiUrl } from '../../../utils/Config';
 
 function UserComponent() {
   const [message, setMessage] = useState('');
@@ -18,7 +20,7 @@ function UserComponent() {
   let room_id = `chat_${credential}`;
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/staff/')
+    axios.get(`${BACKEND_BASE_URL}/api/staff/`)
       .then(response => {
         setMentors(response.data);
 
@@ -30,8 +32,8 @@ function UserComponent() {
     const fetchMessages = async () => {
       try {
         const response = selectedMentor
-          ? await axios.get(`http://localhost:8000/api/chat/get_messages/${user_id}/${selectedMentor.id}/`)
-          : await axios.get('http://localhost:8000/api/chat/messages/');
+          ? await axios.get(`${BACKEND_BASE_URL}/api/chat/get_messages/${user_id}/${selectedMentor.id}/`)
+          : await axios.get(`${BACKEND_BASE_URL}/api/chat/messages/`);
 
         setMessages(response.data);
       } catch (error) {
@@ -45,7 +47,7 @@ function UserComponent() {
   const sendToMentor = async () => {
     try {
       if (selectedMentor) {
-        const response = await axios.post('http://localhost:8000/api/chat/send_message/', {
+        const response = await axios.post(`${BACKEND_BASE_URL}/api/chat/send_message/`, {
           sender: user_id,
           receiver: selectedMentor?.id,
           content: message,
@@ -76,7 +78,7 @@ function UserComponent() {
   useEffect(() => {
     const createSocket = async () => {
       try {
-        const request = new WebSocket(`ws://localhost:8000/ws/chat/${credential}/`);
+        const request = new WebSocket(`${wsApiUrl}/ws/chat/${credential}/`);
 
         request.onopen = () => {
           setSocket(request);

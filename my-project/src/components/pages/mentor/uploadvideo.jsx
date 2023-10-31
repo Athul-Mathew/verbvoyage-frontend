@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getLocal } from '../../../actions/auth';
 import jwtDecode from 'jwt-decode';
+import { BACKEND_BASE_URL } from '../../../utils/Config';
 
 function PlaylistList() {
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
@@ -17,7 +18,7 @@ function PlaylistList() {
             const user_id = decoded.user_id;
 
             axios
-                .get(`http://localhost:8000/api/mentors/playlists/create/`, {
+                .get(`${BACKEND_BASE_URL}/api/mentors/playlists/create/`, {
                     params: { user_id }
                 })
                 .then((response) => {
@@ -40,7 +41,7 @@ function PlaylistList() {
 
         if (token) {
             axios
-                .get('http://localhost:8000/api/mentors/videos/', {
+                .get(`${BACKEND_BASE_URL}/api/mentors/videos/`, {
                     params: { user_id: playlist.user_id, playlist_id: playlist.id }
                 })
                 .then((response) => {
@@ -59,7 +60,7 @@ function PlaylistList() {
 
         if (token) {
             try {
-                await axios.delete(`http://localhost:8000/api/mentors/videos/${videoId}/delete/`);
+                await axios.delete(`${BACKEND_BASE_URL}/api/mentors/videos/${videoId}/delete/`);
                 // Assuming successful deletion, you might want to update the UI accordingly
                 setSelectedPlaylist({
                     ...selectedPlaylist,
@@ -77,7 +78,7 @@ function PlaylistList() {
         if (token) {
             try {
                 const response = await axios.post(
-                    `http://localhost:8000/api/mentors/playlists/create/`,
+                    `${BACKEND_BASE_URL}/api/mentors/playlists/create/`,
                     { title, premium },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
@@ -95,7 +96,7 @@ function PlaylistList() {
 
         if (token) {
             try {
-                await axios.delete(`http://localhost:8000/api/mentors/playlists/${playlistId}/delete/`);
+                await axios.delete(`${BACKEND_BASE_URL}/api/mentors/playlists/${playlistId}/delete/`);
                 // Assuming successful deletion, you might want to update the UI accordingly
                 setPlaylistsData(playlistsData.filter(playlist => playlist.id !== playlistId));
                 console.log(`Playlist with ID ${playlistId} deleted successfully.`);
@@ -116,7 +117,7 @@ function PlaylistList() {
             formData.append('playlist', playlistId);
 
             try {
-                await axios.post(`http://localhost:8000/api/mentors/videos/create/`, formData, {
+                await axios.post(`${BACKEND_BASE_URL}/api/mentors/videos/create/`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${token}`,
@@ -191,7 +192,7 @@ function PlaylistList() {
                                         className="bg-gray-800 p-4 rounded-lg overflow-hidden shadow-lg"
                                     >
                                         <img
-                                            src={`http://localhost:8000${video.thumbnail}`}
+                                            src={`${video.thumbnail}`}
                                             alt="Video Thumbnail"
                                             className="w-full h-48 object-cover mb-4 rounded"
                                         />

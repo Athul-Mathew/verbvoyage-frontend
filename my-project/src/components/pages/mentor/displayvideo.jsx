@@ -123,7 +123,7 @@ function PlaylistList() {
                 user_id: user_id,
             };
 
-            axios.post('http://localhost:8000/api/mentors/playlists/create/', playlistData, {
+            axios.post(`${BACKEND_BASE_URL}/api/mentors/playlists/create/`, playlistData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -152,7 +152,7 @@ function PlaylistList() {
             const user_id = decoded.user_id;
 
             // Perform a request to your backend to get the mentor ID for the given user ID
-            axios.get(`http://localhost:8000/api/mentors/get-mentor-id/${user_id}/`, {
+            axios.get(`${BACKEND_BASE_URL}/api/mentors/get-mentor-id/${user_id}/`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -170,7 +170,7 @@ function PlaylistList() {
                     formData.append('playlist', selectedPlaylistId);
 
                     // Continue with your axios.post request
-                    axios.post('http://localhost:8000/api/mentors/videos/create/', formData, {
+                    axios.post(`${BACKEND_BASE_URL}/api/mentors/videos/create/`, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             Authorization: `Bearer ${token}`,

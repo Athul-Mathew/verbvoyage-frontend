@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import { getLocal } from '../../../actions/auth'
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { BACKEND_BASE_URL } from '../../../utils/Config';
 
 function MentorApplication() {
   const navigate =useNavigate()
@@ -48,7 +49,7 @@ function MentorApplication() {
       }
       formDataToSend.append('user', user);
 
-      const response = await axios.post('http://localhost:8000/api/mentors/mentor-application/', formDataToSend, {
+      const response = await axios.post(`${BACKEND_BASE_URL}/api/mentors/mentor-application/`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

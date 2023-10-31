@@ -4,7 +4,7 @@ import premium from '../../../assets/premiumbg.png';
 import free from '../../../assets/free.jpg';
 import PlaylistVideos from './PlaylistVideos';
 import Loader from '../Loader';
-
+import { BACKEND_BASE_URL } from '../../../utils/Config';
 const CourseList = () => {
   const [courses, setCourses] = useState([]);
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(null);
@@ -13,7 +13,7 @@ const CourseList = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/mentors/user-playlists/');
+      const response = await fetch(`${BACKEND_BASE_URL}/api/mentors/user-playlists/`);
       const responseBody = await response.json();
       setCourses(responseBody);
       setIsLoading(false);

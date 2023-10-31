@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import jwtDecode from "jwt-decode";
 import { getLocal } from '../../../actions/auth';
 import defaultProfileImage from '../../../assets/batman-1.jpg'
-
+import { BACKEND_BASE_URL } from '../../../utils/Config';
 const ProfilePage = () => {
   const token = getLocal('authToken');
   const decoded = jwtDecode(token);
@@ -14,7 +14,7 @@ const ProfilePage = () => {
   const [newImage, setNewImage] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/users/${decoded.user_id}/`)
+    fetch(`${BACKEND_BASE_URL}/api/users/${decoded.user_id}/`)
       .then((response) => response.json())
       .then((data) => {
         setName(data);
@@ -43,7 +43,7 @@ const ProfilePage = () => {
       console.log(pair[0] + ', ' + pair[1]);
     }
   
-    fetch(`http://localhost:8000/api/editusers/${decoded.user_id}/`, {
+    fetch(`${BACKEND_BASE_URL}/api/editusers/${decoded.user_id}/`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${token}`,

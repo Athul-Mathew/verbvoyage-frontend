@@ -7,7 +7,7 @@ const PlaylistVideos = ({ playlistId, setIsEnrolled, setSelectedPlaylistId }) =>
 
   const fetchVideos = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/mentors/playlist-videos/${playlistId}/`);
+      const response = await fetch(`${BACKEND_BASE_URL}/api/mentors/playlist-videos/${playlistId}/`);
       const data = await response.json();
       setVideos(data);
     } catch (error) {

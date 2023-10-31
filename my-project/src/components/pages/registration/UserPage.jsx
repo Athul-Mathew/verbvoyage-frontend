@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BACKEND_BASE_URL } from '../../../utils/Config';
 
 function UserPage({ profile }) {
 
@@ -17,7 +18,7 @@ function UserPage({ profile }) {
         };
         
         const timeout = setTimeout(() => {
-        axios.post('http://127.0.0.1:8000/api/auth/login/', credentials)
+        axios.post(`${BACKEND_BASE_URL}/api/auth/login/`, credentials)
           .then((response) => {
             console.log(response['data']);
             setToken(response['data']['token']);
@@ -29,7 +30,7 @@ function UserPage({ profile }) {
 
       useEffect(() => {
 
-        axios.get("http://127.0.0.1:8000/api/auth/hello/",{
+        axios.get(`${BACKEND_BASE_URL}/api/auth/hello/`,{
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token '+token
