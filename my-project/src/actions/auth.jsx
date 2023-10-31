@@ -1,10 +1,10 @@
 import { toast } from "react-hot-toast";
-
+import { BACKEND_BASE_URL } from "../utils/Config";
 
 
 
 export default async function login(e) {
-  let response = await fetch("http://localhost:8000/api/login/", {
+  let response = await fetch(`${BACKEND_BASE_URL}/api/login/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
