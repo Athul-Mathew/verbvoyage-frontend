@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import jwtDecode from "jwt-decode";
-import { getLocal } from '../../../actions/auth'
+import jwtDecode from 'jwt-decode';
+import { getLocal } from '../../../actions/auth';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { BACKEND_BASE_URL } from '../../../utils/Config';
 
 function MentorApplication() {
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,12 +16,11 @@ function MentorApplication() {
     education: '',
     image: null,
     phoneNumber: '',
-    
   });
 
   const token = getLocal('authToken');
-  const decoded = jwtDecode(token); 
-  const user =decoded.user_id 
+  const decoded = jwtDecode(token);
+  const user = decoded.user_id;
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -49,11 +48,15 @@ function MentorApplication() {
       }
       formDataToSend.append('user', user);
 
-      const response = await axios.post(`${BACKEND_BASE_URL}/api/mentors/mentor-application/`, formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const response = await axios.post(
+        `${BACKEND_BASE_URL}/api/mentors/mentor-application/`,
+        formDataToSend,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
 
       if (response.status === 201) {
         // Handle success
@@ -73,115 +76,104 @@ function MentorApplication() {
       }
     } catch (error) {
       toast.error('User is already registered.', { duration: 5000 });
-        navigate('/userhome');
+      navigate('/userhome');
       // Handle error
       console.error('Error submitting form:', error);
     }
   };
 
-  // ... (render and return JSX)
-
-  
-
   return (
-    <div className="bg-gradient-to-b from-yellow-300 via-yellow-400 to-yellow-500 text-black min-h-screen p-4 md:p-8">
+    <div
+      className="bg-gradient-to-b from-purple-900 via-blue-900 to-indigo-900 text-white min-h-screen p-4 md:p-8"
+      style={{ backgroundImage: 'url("https://wallpapercave.com/wp/wp2239808.gif")', backgroundSize: 'cover' }}
+    >
       <div className="container mx-auto max-w-md">
         <button
-          className="absolute top-4 left-4 bg-white text-black hover:bg-black hover:text-white px-3 py-1 rounded-full transition duration-300 ease-in-out"
+          className="absolute top-4 left-4 bg-cyan-400 hover:bg-cyan-700 text-white hover:text-black px-3 py-1 rounded-full transition duration-300 ease-in-out"
           onClick={() => window.history.back()}
         >
           Home
         </button>
-        <h1 className="text-2xl md:text-4xl font-semibold text-center my-6">Apply to Become a Mentor</h1>
-        <form onSubmit={handleSubmit} className="bg-black text-yellow-500 rounded-lg p-4 md:p-6 shadow-lg">
+        <h1 className="text-2xl md:text-4xl font-semibold text-center my-6 text-cyan-400">Apply to Become a Mentor</h1>
+        <form onSubmit={handleSubmit} className="bg-black  text-white rounded-lg p-4 md:p-6 shadow-lg">
           <div className="mb-4">
-            <label className="block text-yellow-500 text-sm mb-1">Name</label>
+            <label className="block text-cyan-400 text-sm mb-1">Name</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className=" border border-gray-600 bg-transparent rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus:border-primary-600 hover:border-primary-400"
+              className="border border-cyan-400 bg-transparent rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus-cyan-400 hover:border-pink-400"
               required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-yellow-500 text-sm mb-1">Email</label>
+            <label className="block text-cyan-400 text-sm mb-1">Email</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="bg-transparent  border border-gray-600 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus:border-primary-600 hover:border-primary-400"
+              className="bg-transparent border border-cyan-400 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus-cyan-400 hover:border-pink-400"
               required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-yellow-500 text-sm mb-1">Age</label>
+            <label className="block text-cyan-400 text-sm mb-1">Age</label>
             <input
               type="number"
               name="age"
               value={formData.age}
               onChange={handleChange}
-              className="bg-transparent  border border-gray-600 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus:border-primary-600 hover:border-primary-400"
+              className="bg-transparent border border-cyan-400 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus-cyan-400 hover:border-pink-400"
               required
             />
           </div>
           <div className="mb-4">
-            <label className="block text-yellow-500 text-sm mb-1">Qualifications</label>
+            <label className="block text-cyan-400 text-sm mb-1">Qualifications</label>
             <textarea
               name="qualifications"
               value={formData.qualifications}
               onChange={handleChange}
               rows="4"
-              className="bg-transparent  border border-gray-600 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus:border-primary-600 hover:border-primary-400"
+              className="bg-transparent border border-cyan-400 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus-cyan-400 hover:border-pink-400"
               required
             ></textarea>
           </div>
           <div className="mb-4">
-            <label className="block text-yellow-500 text-sm mb-1">Education</label>
+            <label className="block text-cyan-400 text-sm mb-1">Education</label>
             <textarea
               name="education"
               value={formData.education}
               onChange={handleChange}
               rows="4"
-              className="bg-transparent  border border-gray-600 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus:border-primary-600 hover:border-primary-400"
+              className="bg-transparent border border-cyan-400 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus-cyan-400 hover:border-pink-400"
               required
             ></textarea>
           </div>
-          {/* <div className="mb-4">
-            <label className="block text-gray-400 text-sm mb-1">Country</label>
-            <input
-              type="text"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              className="bg-gray-700 border border-gray-600 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus:border-primary-600 hover:border-primary-400"
-            />
-          </div> */}
           <div className="mb-4">
-            <label className="block text-yellow-500 text-sm mb-1">Profile Image</label>
+            <label className="block text-cyan-400 text-sm mb-1">Profile Image</label>
             <input
               type="file"
               name="image"
               accept="image/*"
               onChange={handleChange}
-              className="bg-transparent  border border-gray-600 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus:border-primary-600 hover:border-primary-400"
+              className="bg-transparent border border-cyan-400 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus-cyan-400 hover:border-pink-400"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-yellow-500 text-sm mb-1">Phone Number</label>
+            <label className="block text-cyan-400 text-sm mb-1">Phone Number</label>
             <input
               type="tel"
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="bg-transparent  border border-gray-600 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus:border-primary-600 hover:border-primary-400"
+              className="bg-transparent border border-cyan-400 rounded-lg p-2 md:p-3 w-full focus:outline-none focus:ring focus-cyan-400 hover:border-pink-400"
             />
           </div>
           <button
             type="submit"
-            className="bg-yellow-500 hover:bg-yellow-400 text-white hover:text-black py-2 px-4 rounded-full w-full transition duration-300 ease-in-out"
+            className="bg-cyan-400 hover:bg-pink-600 text-white hover:text-black py-2 px-4 rounded-full w-full transition duration-300 ease-in-out"
           >
             Submit Application
           </button>
