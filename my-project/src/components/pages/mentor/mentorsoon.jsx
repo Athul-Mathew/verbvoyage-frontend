@@ -2,7 +2,7 @@ import React from 'react';
   // Import your background GIF
 
 const ComingSoon = () => {
-    const gifBackground=""
+    const gifBackground="https://www.bing.com/th/id/OGC.316e0283f1afbb14d1c2d8f3de08e5ae?pid=1.7&rurl=https%3a%2f%2fi.pinimg.com%2foriginals%2f8c%2f69%2f41%2f8c6941594c4fc8401528992a0b1eacc2.gif&ehk=PB595%2fzDANIYBXRtAsGra1YPdpvlUNvA8JlCblt8tlo%3d"
     return (
         <div className="bg-fixed bg-cover min-h-screen relative">
             <img src={gifBackground} alt="Cyberpunk Background" className="w-full h-full object-cover" />
