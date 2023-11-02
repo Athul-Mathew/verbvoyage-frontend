@@ -50,7 +50,7 @@ function Login() {
             backgroundPosition: 'center',
           }}
         >
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 bg-black">
+          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
             <Toaster position="top-center" reverseOrder={false}></Toaster>
 
            
