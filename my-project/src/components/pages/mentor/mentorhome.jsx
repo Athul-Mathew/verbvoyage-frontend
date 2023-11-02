@@ -53,7 +53,7 @@ function MentorHomePage() {
           </div>
 
           {/* View Video Option */}
-          <Link to="/mentor/view-video" className="hover:underline">
+          <Link to="/mentor/view-video">
             <div className="bg-black rounded-lg p-4 hover:bg-cyan-400 hover:shadow-xl transition duration-300 cursor-pointer mb-4">
               <h2 className="text-xl font-semibold mb-2 hover:text-white text-white">
                 View Video
@@ -63,7 +63,7 @@ function MentorHomePage() {
           </Link>
 
           {/* Chat with Users Option */}
-          <Link to="/mentor/mentorchat" className="hover:underline">
+          <Link to="/mentor/mentorchat">
             <div className="bg-black rounded-lg p-4 hover:bg-cyan-400 hover:shadow-xl transition duration-300 cursor-pointer mb-4">
               <h2 className="text-xl font-semibold mb-2 hover:text-white text-white">
                 Chat with Users
@@ -73,13 +73,14 @@ function MentorHomePage() {
           </Link>
 
           {/* Contact Admin Option */}
+          
           <div className="bg-black rounded-lg p-4 hover:bg-cyan-400 hover:shadow-xl transition duration-300 cursor-pointer mb-4">
             <h2 className="text-xl font-semibold mb-2 hover:text-white text-white">
               Contact Admin
             </h2>
             {/* Contact form or messaging here */}
           </div>
-
+         
           {/* Upload Video Content Option */}
           <div className="bg-black rounded-lg p-4 hover:bg-cyan-400 hover:shadow-xl transition duration-300 cursor-pointer mb-4">
             <h2 className="text-xl font-semibold mb-2 hover:text-white text-white">
