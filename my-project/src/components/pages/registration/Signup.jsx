@@ -1,6 +1,6 @@
-import React, {  useState } from 'react';
-import LoginImg from '../../../assets/login.jpeg';
-import { toast, Toaster } from 'react-hot-toast'
+import React, { useState } from 'react';
+// import LoginImg from '../../../assets/login.jpeg';
+import { toast, Toaster } from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { BACKEND_BASE_URL } from '../../../utils/Config';
 import axios from 'axios';
@@ -14,7 +14,8 @@ function SignupPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoader] = useState(false); // Add isLoading state
-
+     
+  const LoginImg='https://wallpaperaccess.com/full/4910984.gif'
   const navigate = useNavigate();
 
   const data = {
@@ -57,7 +58,7 @@ function SignupPage() {
 
   return (
     <div
-      className="flex justify-center items-center min-h-screen"
+      className="flex justify-center items-center min-h-screen bg-cyberpunk" // Apply the cyberpunk background
       style={{
         background: `url(${LoginImg}) center/cover no-repeat`,
       }}
@@ -68,12 +69,12 @@ function SignupPage() {
         <Loader />
       ) : (
         // Render the signup form when isLoading is false
-        <div className="bg-white p-8 rounded-lg shadow-md max-w-xl w-full">
-          <h2 className="text-4xl font-bold text-center mb-6">Sign Up</h2>
+        <div className="bg-black  p-8 rounded-lg shadow-md max-w-xl w-full">
+          <h2 className="text-4xl font-bold text-center mb-6 text-cyan-400">Sign Up</h2>
           <form onSubmit={signupSubmit}>
             <div className="mb-4">
               <input
-                className="border border-gray-300 rounded px-4 py-3 w-full placeholder-gray-400 text-lg"
+                className="border border-cyan-400 rounded px-4 py-3 w-full placeholder-cyan-400 text-lg"
                 type="text"
                 name="username"
                 placeholder="Username"
@@ -83,7 +84,7 @@ function SignupPage() {
             </div>
             <div className="mb-4">
               <input
-                className="border border-gray-300 rounded px-4 py-3 w-full placeholder-gray-400 text-lg"
+                className="border border-cyan-400 rounded px-4 py-3 w-full placeholder-cyan-400 text-lg"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -93,7 +94,7 @@ function SignupPage() {
             </div>
             <div className="mb-4">
               <input
-                className="border border-gray-300 rounded px-4 py-3 w-full placeholder-gray-400 text-lg"
+                className="border border-cyan-400 rounded px-4 py-3 w-full placeholder-cyan-400 text-lg"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -103,7 +104,7 @@ function SignupPage() {
             </div>
             <div className="mb-6">
               <input
-                className="border border-gray-300 rounded px-4 py-3 w-full placeholder-gray-400 text-lg"
+                className="border border-cyan-400 rounded px-4 py-3 w-full placeholder-cyan-400 text-lg"
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm Password"
@@ -112,23 +113,23 @@ function SignupPage() {
               />
             </div>
             <button
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full w-full transition duration-300"
+              className="bg-primary-600 hover:bg-primary-700 text-cyan-400 font-semibold py-3 px-6 rounded-full w-full transition duration-300"
               type="submit"
             >
               Create Account
             </button>
           </form>
           <div className="text-center mt-4">
-            <p>
+            <p className ="text-cyan-400">
               Already have an account?{' '}
-              <Link to="/login" className="text-blue-500 hover:underline">
+              <Link to="/login" className="text-cyan-400 hover:underline">
                 Login
               </Link>
             </p>
           </div>
           <div className="mt-6 flex items-center justify-center">
             <FcGoogle className="mr-2" />
-            <p>Sign Up with Google</p>
+            <p className="text-cyan-400">Sign Up with Google</p>
           </div>
         </div>
       )}

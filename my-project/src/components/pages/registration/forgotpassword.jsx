@@ -82,10 +82,10 @@ const ForgotPassword = () => {
       </Helmet>
 
       <div className="flex flex-col md:flex-row h-screen">
-        <div className="bg-white-200 md:w-1/2 flex flex-col justify-center items-center">
-          <h2 className="text-2xl font-bold text-gray-800">VerbVoyage</h2>
+        <div className="bg-black md:w-1/2 flex flex-col justify-center items-center">
+          <h2 className="text-2xl font-bold text-cyan-400">VerbVoyage</h2>
 
-          <h4 className="text-xl  text-gray-800 mb-4 font-casual">
+          <h4 className="text-xl  text-cyan-400 mb-4 font-casual">
             "verbvoyage, Unlock Your knowledge"
           </h4>
           <img
@@ -93,10 +93,10 @@ const ForgotPassword = () => {
             alt="Company Logo"
             className="w-96 h-96 object-contain mb-4"
           />
-          <h2 className="text-2xl text-gray-800">Online learning Platform</h2>
+          <h2 className="text-2xl text-cyan-400">Online learning Platform</h2>
         </div>
-        <div className="bg-white flex flex-col justify-center items-center md:w-1/2">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">
+        <div className="bg-black flex flex-col justify-center items-center md:w-1/2">
+          <h1 className="text-2xl font-bold text-cyan-400 mb-4">
             Forgot Password
           </h1>
           <div className="bg-gray-200 rounded-md shadow-md p-8 w-full max-w-md">

@@ -4,13 +4,14 @@ import Loader from '../Loader';
 import { getLocal } from '../../../actions/auth';
 import jwtDecode from 'jwt-decode';
 import { BACKEND_BASE_URL } from '../../../utils/Config';
+
 function MentorList() {
   const [mentors, setMentors] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const token = getLocal('authtoken');
   const decoded = jwtDecode(token);
-console.log(mentors)
+
   useEffect(() => {
     fetch(`${BACKEND_BASE_URL}/api/mentors/mentors/`)
       .then((response) => response.json())
@@ -30,14 +31,14 @@ console.log(mentors)
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-yellow-300 to-yellow-500 text-black min-h-screen p-4">
+    <div className="bg-gradient-to-br from-purple-900 to-indigo-900 text-cyberpunk-text min-h-screen p-4">
       <div className="container mx-auto">
         <Link to="/userhome">
-          <button className="bg-black hover:bg-white text-white hover:text-black py-2 px-4 rounded-full mb-8">
+          <button className="bg-cyberpunk-bg hover:bg-cyberpunk-text text-white hover:text-black py-2 px-4 rounded-full mb-8">
             Back to Home
           </button>
         </Link>
-        <h1 className="text-4xl font-semibold mb-8">Mentors</h1>
+        <h1 className="text-4xl font-semibold text-cyberpunk-title mb-8">Mentors</h1>
         {isLoading ? (
           <Loader />
         ) : (
@@ -45,7 +46,7 @@ console.log(mentors)
             {mentors.map((mentor) => (
               <div
                 key={mentor.id}
-                className="bg-white text-black p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out"
+                className="bg-cyberpunk-bg text-cyberpunk-text p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out"
               >
                 <Link to={`/mentorchat/${mentor.id}`} className="flex flex-col items-center">
                   <img
@@ -55,11 +56,11 @@ console.log(mentors)
                   />
                   <h2 className="text-xl font-semibold">{mentor.name}</h2>
                   <p className="text-gray-400">{mentor.country}</p>
-                  <button className="bg-primary-600 hover:bg-primary-700 text-white hover:text-black py-2 px-4 rounded-full mt-4">
+                  <button className="bg-cyberpunk-button hover:bg-cyberpunk-button-hover text-cyberpunk-text hover:text-cyberpunk-bg py-2 px-4 rounded-full mt-4">
                     Send a Chat Request
                   </button>
                   <Link to={'/uservideocall'}>
-                    <button className="mt-2 text-sm text-gray-500 hover:underline">uservideocall</button>
+                    <button className="mt-2 text-sm text-cyberpunk-link hover:underline">uservideocall</button>
                   </Link>
                 </Link>
               </div>

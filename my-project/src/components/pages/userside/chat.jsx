@@ -23,7 +23,6 @@ function UserComponent() {
     axios.get(`${BACKEND_BASE_URL}/api/staff/`)
       .then(response => {
         setMentors(response.data);
-
       })
       .catch(error => console.error('Error fetching mentors:', error));
   }, []);
@@ -60,7 +59,6 @@ function UserComponent() {
     }
   };
 
-
   useEffect(() => {
     if (socket) {
       socket.onmessage = async (event) => {
@@ -73,7 +71,6 @@ function UserComponent() {
       };
     }
   }, [socket]);
-
 
   useEffect(() => {
     const createSocket = async () => {
@@ -105,21 +102,21 @@ function UserComponent() {
     };
   }, [selectedMentor, user_id]);
 
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState('');
 
   const handleSendMessage = async () => {
     if (socket && socket.readyState === socket.OPEN && input !== '') {
       await socket.send(JSON.stringify({ message: input, receiver_id: String(user_id), sender: selectedMentor.id }));
     } else {
-      console.log("Websocket is not open for you to send message")
+      console.log("Websocket is not open for you to send a message");
     }
-    await setInput('')
+    await setInput('');
   };
 
   return (
-    <div className="flex h-screen bg-gray-200">
+    <div className="flex h-screen bg-black">
       {/* Mentors List */}
-      <div className="w-1/4 bg-gray-800 text-white p-4">
+      <div className="w-1/4 bg-black text-cyan-400 p-4">
         <h2 className="text-xl font-bold mb-4">Mentors</h2>
         <ul>
           {mentors.map((mentor) => (
@@ -140,8 +137,8 @@ function UserComponent() {
       {/* Chat Container */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Chat Header */}
-        <div className="flex-shrink-0 bg-white border-b-2 p-4">
-          <h1 className="text-xl font-bold">User Chat</h1>
+        <div className="flex-shrink-0 bg-cyan-400 border-b-2 p-4">
+          <h1 className="text-xl font-bold text-black">User Chat</h1>
         </div>
 
         {selectedMentor ? (
@@ -151,18 +148,17 @@ function UserComponent() {
               {messages.map((msg) => (
                 <li
                   key={msg.id}
-                  className={`flex justify-between ${msg.sender == user_id ? 'flex-row-reverse' : 'flex-row'
-                    }`}
+                  className={`flex justify-between ${msg.sender == user_id ? 'flex-row-reverse' : 'flex-row'}`}
                 >
                   <div
                     className={`p-2 rounded ${msg.sender == user_id
-                        ? 'bg-blue-500 text-white self-start'  // Message sent by the user on the left side
-                        : 'bg-yellow-600 self-end'  // Message received from the mentor on the right side
+                        ? 'bg-blue-500 text-white self-start'
+                        : 'bg-yellow-600 self-end'
                       }`}
                   >
                     {msg.message}
                   </div>
-                  <div className="text-xs text-gray-500">{formatTime(msg.timestamp)}</div>
+                  <div className="text-xs text-cyan-400">{formatTime(msg.timestamp)}</div>
                 </li>
               ))}
             </ul>
@@ -170,7 +166,7 @@ function UserComponent() {
         ) : (
           // Render a different component when no mentor is selected
           <div className="flex-1 flex items-center justify-center">
-            <p className="text-xl">Please select a mentor to start chatting.</p>
+            <p className="text-xl text-cyan-400">Please select a mentor to start chatting.</p>
           </div>
         )}
 
@@ -185,16 +181,13 @@ function UserComponent() {
             />
             <button
               onClick={handleSendMessage}
-              className="bg-blue-500 text-white p-2 rounded-r hover:bg-blue-600 focus:outline-none"
+              className="bg-cyan-400 text-white p-2 rounded-r hover:bg-cyan-600 focus:outline-none"
             >
               Send
             </button>
           </div>
         </div>
       </div>
-
-      {/* WebSocket Connection */}
-
     </div>
   );
 }
