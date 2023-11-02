@@ -7,6 +7,7 @@ import MentorHomePage from '../pages/mentor/mentorhome'
 import Uploadvideo from '../pages/mentor/uploadvideo'
 import Viewvideo from '../pages/mentor/displayvideo'
 import Mchat from '../pages/mentor/mentorchat'
+import Mentorsoon from '../pages/mentor/mentorsoon'
 
 function MentorRoute() {
   const token = getLocal('authToken');
@@ -21,6 +22,7 @@ function MentorRoute() {
         
         <Route path="/view-video" element={token !== null && decoded.is_staff ? <Viewvideo /> : <Navigate to="/forbiden" />} />
         <Route path="/mentorchat" element={token !== null && decoded.is_staff ? < Mchat/> : <Navigate to="/forbiden" />} />
+        <Route path="/mentorsoon" element={token !== null && decoded.is_staff ? < Mentorsoon/> : <Navigate to="/forbiden" />} />
           {/* <Route path="/mentorchat/:mentor" element={<Mentorsidechat/>} /> */}
         </Routes>
     </div>

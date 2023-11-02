@@ -45,12 +45,16 @@ function MentorHomePage() {
       <div className="m-10 w-96">
         <div className="flex flex-col">
           {/* Dashboard Option */}
+          <Link to="/mentor/mentorsoon">
+
           <div className="bg-black rounded-lg p-4 hover:bg-cyan-400 hover:shadow-xl transition duration-300 cursor-pointer mb-4">
             <h2 className="text-xl font-semibold mb-2 hover:text-white text-white">
               Dashboard
             </h2>
             {/* Dashboard content here */}
           </div>
+          </Link>
+
 
           {/* View Video Option */}
           <Link to="/mentor/view-video">
@@ -73,21 +77,20 @@ function MentorHomePage() {
           </Link>
 
           {/* Contact Admin Option */}
+          <Link to="/mentor/mentorsoon">
           
           <div className="bg-black rounded-lg p-4 hover:bg-cyan-400 hover:shadow-xl transition duration-300 cursor-pointer mb-4">
             <h2 className="text-xl font-semibold mb-2 hover:text-white text-white">
               Contact Admin
             </h2>
-            {/* Contact form or messaging here */}
+            
           </div>
-         
-          {/* Upload Video Content Option */}
-          <div className="bg-black rounded-lg p-4 hover:bg-cyan-400 hover:shadow-xl transition duration-300 cursor-pointer mb-4">
-            <h2 className="text-xl font-semibold mb-2 hover:text-white text-white">
-              Upload Video Content
-            </h2>
-            {/* Upload video content form or interface here */}
-          </div>
+          </Link>
+          
+
+          
+          
+
         </div>
       </div>
 
