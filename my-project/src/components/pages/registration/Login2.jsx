@@ -5,10 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
 import Loader from '../Loader';
 import login from '../../../actions/auth';
+import { getLocal } from '../../../actions/auth';
 
 const login2Img = 'https://wallpaperaccess.com/full/4910984.gif'; // Your provided gif link
 
 function Login() {
+  const token =getLocal('authtoken')
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoader] = useState(false);
@@ -34,6 +37,12 @@ function Login() {
       setIsLoader(false);
     }
   };
+
+  useEffect(()=>{
+    if (token) {
+      navigate('/userhome');}
+
+  })
 
   return (
     <>

@@ -19,8 +19,8 @@ function PlaylistList() {
     const [newVideoTitle, setNewVideoTitle] = useState('');
     const [newVideoFile, setNewVideoFile] = useState(null);
     const [newVideoThumbnail, setNewVideoThumbnail] = useState(null);
-    console.log("====0000--",selectedPlaylist);
-    
+    console.log("====0000--", selectedPlaylist);
+
     useEffect(() => {
 
 
@@ -195,17 +195,17 @@ function PlaylistList() {
 
 
     return (
-        <div className={`bg-gradient-to-r from-yellow-300 to bg-yellow-500   min-h-screen text-white font-sans ${isModalOpen ? 'filter blur-md' : ''} transition-all duration-300 ease-in-out`}>
+        
+        <div className={`bg-gradient-to-b from-purple-600 to-blue-900 text-white min-h-screen relative" ${isModalOpen ? 'filter blur-md' : ''} transition-all duration-300 ease-in-out`}>
             <div className="flex flex-col md:flex-row">
-            <div className={`w-full md:w-1/4 bg-yellow p-4 text-white`}>
-                    <div className="text-2xl font-bold mb-4 text-black">Video Manager</div>
+                <div className={`w-full md:w-1/4 bg-gradient-to-r from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 p-4 text-white`}>
+                    <div className="text-2xl font-bold mb-4">Video Manager</div>
                     <div className="space-y-4">
                         {playlistsData.map((playlist, index) => (
                             <div
                                 key={`playlist-${playlist.id}-${index}`}
                                 onClick={() => handlePlaylistClick(playlist)}
-                                className={`cursor-pointer flex items-center p-2 space-x-2 ${selectedPlaylist?.id === playlist.id ? 'bg-black' : 'hover:bg-gray-700'
-                                    }`}
+                                className={`cursor-pointer flex items-center p-2 space-x-2 ${selectedPlaylist?.id === playlist.id ? 'bg-black' : 'hover:bg-gray-700'}`}
                             >
                                 <div className="flex-shrink-0 w-10 h-10 rounded overflow-hidden">
                                     <img
@@ -214,7 +214,7 @@ function PlaylistList() {
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
-                                <div className="flex-1 truncate">{playlist.title}</div>
+                                <div className="flex-1 truncate text-cyberpunk-text">{playlist.title}</div>
                             </div>
                         ))}
                         {selectedPlaylist && (
@@ -224,9 +224,11 @@ function PlaylistList() {
                             >
                                 Delete Playlist
                             </button>
+                            
                         )}
                     </div>
                 </div>
+
 
                 <div className="w-full md:w-3/4 p-4">
                     {selectedPlaylist ? (
@@ -247,7 +249,7 @@ function PlaylistList() {
                                                 alt="Video Thumbnail"
                                                 className="w-full h-48 object-cover mb-4 rounded"
                                             />
-                                            
+
                                             <div className="flex items-center justify-between">
                                                 <div className="text-lg font-semibold">{video.title}</div>
                                                 <button
@@ -271,20 +273,22 @@ function PlaylistList() {
             </div>
 
             {/* Top right buttons */}
-                    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
-        <button
-            onClick={() => setCreatePlaylistModalOpen(true)}
-            className="w-20 md:w-28 h-8 md:h-10 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white rounded-none shadow-md"
-        >
-            Create Playlist
-        </button>
-        <button
-            onClick={() => setAddVideoModalOpen(true)}
-            className="w-20 md:w-28 h-8 md:h-10 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white rounded-none shadow-md"
-        >
-            Add Video
-        </button>
-        </div>
+            <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
+                <button
+                    onClick={() => setCreatePlaylistModalOpen(true)}
+            className="bg-gradient-to-b from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 text-cyberpunk-text hover:from-cyberpunk-bg2 hover:to-cyberpunk-bg1 hover:text-black hover:bg-opacity-80 rounded-md px-4 py-2 transition duration-300 ease-in-out"
+            
+                >
+                    Create Playlist
+                </button>
+                
+                <button
+                    onClick={() => setAddVideoModalOpen(true)}
+                    className="w-20 md:w-28 h-8 md:h-10 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white rounded-none shadow-md"
+                >
+                    Add Video
+                </button>
+            </div>
 
 
             {/* Create Playlist Modal */}
