@@ -44,6 +44,7 @@ function Login() {
           className="bg-cyberpunk" // Set a custom CSS class for the cyberpunk theme
           style={{
             backgroundImage: `url(${login2Img})`,
+            backgroundColor:black,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
