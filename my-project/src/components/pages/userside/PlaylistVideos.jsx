@@ -18,7 +18,7 @@ const PlaylistVideos = ({ playlistId, setIsEnrolled, setSelectedPlaylistId }) =>
   useEffect(() => {
     fetchVideos();
   }, [playlistId]);
-
+console.log(videos)
   return (
     <div className="container mx-auto mt-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -35,9 +35,9 @@ const PlaylistVideos = ({ playlistId, setIsEnrolled, setSelectedPlaylistId }) =>
             <video
               controls
               className="w-full h-32 object-cover mb-4 rounded-lg"
-              poster={BACKEND_BASE_URL + video.thumbnail}
+              poster={video.thumbnail}
             >
-              <source src={BACKEND_BASE_URL + video.video_file} type="video/mp4" />
+              <source src={video.video_url} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p className="text-sm text-gray-500">{`Video ${index + 1}`}</p>

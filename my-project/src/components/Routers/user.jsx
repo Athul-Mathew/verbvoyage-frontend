@@ -20,6 +20,7 @@ import Soon from '../../components/pages/userside/soon'
 import Videocall from '../../components/pages/videocall/videocall'
 import NotPremiumPage from '../pages/userside/notpremium';
 import { useEffect } from 'react';
+import Course from '../pages/userside/course'
 import Check from '../pages/userside/check'
 function UserRoutes() {
   const token = getLocal('authToken');
@@ -58,6 +59,9 @@ function UserRoutes() {
          
           <Route path="/profile" element={<ProfilePage/>} />
           <Route path="/course" element={<CourseList/>} />
+          <Route path="/course/:courseId" element={<Course />} />
+
+          
           <Route path="/video-list" element={<Video/>} />
           <Route path="/chat" element={<Chat/>} />
         

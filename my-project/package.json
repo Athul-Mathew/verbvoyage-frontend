@@ -46,6 +46,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
     "socket.io-client": "^4.7.2",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4",
     "websocket": "^1.0.34",
     "websocket-extensions": "^0.1.4",

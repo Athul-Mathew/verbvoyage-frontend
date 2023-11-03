@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 import { BACKEND_BASE_URL } from '../../../utils/Config';
 import { getLocal } from '../../../actions/auth';
 import jwtDecode from 'jwt-decode';
+import { storage } from '../../../firebase/config';
+import { ref, uploadBytes, getDownloadURL, getStorage, deleteObject } from 'firebase/storage'
 
 function PlaylistList() {
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
@@ -19,6 +21,7 @@ function PlaylistList() {
     const [newVideoTitle, setNewVideoTitle] = useState('');
     const [newVideoFile, setNewVideoFile] = useState(null);
     const [newVideoThumbnail, setNewVideoThumbnail] = useState(null);
+    const [bloading, setbLoading] = useState(false);
     console.log("====0000--", selectedPlaylist);
 
     useEffect(() => {
@@ -59,6 +62,8 @@ function PlaylistList() {
         setModalOpen(false);
 
     };
+    const token = getLocal('authtoken')
+    const decoded = jwtDecode(token)
 
     const handlePlaylistClick = async (playlist) => {
         try {
@@ -164,27 +169,29 @@ function PlaylistList() {
                     // Now you have the mentor_id, you can use it in your form data
                     const formData = new FormData();
                     formData.append('title', newVideoTitle);
-                    formData.append('video_file', newVideoFile);
                     formData.append('thumbnail', newVideoThumbnail);
                     formData.append('mentor', mentor_id);
                     formData.append('playlist', selectedPlaylistId);
-
+                    formData.append('video_url', videoUrl);
+                    
                     // Continue with your axios.post request
-                    axios.post(`${BACKEND_BASE_URL}/api/mentors/videos/create/`, formData, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                            Authorization: `Bearer ${token}`,
-                        },
-                    })
-                        .then((response) => {
-                            console.log('Video created successfully:', response.data);
+                    if (videoUrl != "") {
+                        axios.post(`${BACKEND_BASE_URL}/api/mentors/videos/create/`, formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data',
+                                Authorization: `Bearer ${token}`,
+                            },
                         })
-                        .catch((error) => {
-                            console.error('Error creating video:', error);
-                        })
-                        .finally(() => {
-                            setAddVideoModalOpen(false);
-                        });
+                            .then((response) => {
+                                console.log('Video created successfully:', response.data);
+                            })
+                            .catch((error) => {
+                                console.error('Error creating video:', error);
+                            })
+                            .finally(() => {
+                                setAddVideoModalOpen(false);
+                            });
+                    }
                 })
                 .catch((error) => {
                     console.error('Error getting mentor ID:', error);
@@ -192,10 +199,25 @@ function PlaylistList() {
         }
     };
 
+    const [videoUpload, setVideoUpload] = useState(null)
+    const [videoUploadButton, setVideoUploadButton] = useState(false)
+    const [videoUrl, setVideoUrl] = useState('')
 
 
+    const handleVideoUpload = async () => {
+        console.log("Its being called here")
+        setbLoading(true)
+        if (newVideoFile == null) return
+        const videoRef = ref(storage, `videos/user_id_${decoded?.user_id}_${newVideoTitle != '' ? newVideoTitle : newVideoFile?.name}`)
+        console.log("This is the videoref: ", videoRef)
+        await uploadBytes(videoRef, newVideoFile);
+        const videoURL = await getDownloadURL(videoRef);
+        console.log("placed url above")
+        await setVideoUrl(videoURL)
+        setbLoading(false)
+    }
     return (
-        
+
         <div className={`bg-gradient-to-b from-purple-600 to-blue-900 text-white min-h-screen relative" ${isModalOpen ? 'filter blur-md' : ''} transition-all duration-300 ease-in-out`}>
             <div className="flex flex-col md:flex-row">
                 <div className={`w-full md:w-1/4 bg-gradient-to-r from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 p-4 text-white`}>
@@ -224,7 +246,7 @@ function PlaylistList() {
                             >
                                 Delete Playlist
                             </button>
-                            
+
                         )}
                     </div>
                 </div>
@@ -276,12 +298,12 @@ function PlaylistList() {
             <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
                 <button
                     onClick={() => setCreatePlaylistModalOpen(true)}
-            className="bg-gradient-to-b from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 text-cyberpunk-text hover:from-cyberpunk-bg2 hover:to-cyberpunk-bg1 hover:text-black hover:bg-opacity-80 rounded-md px-4 py-2 transition duration-300 ease-in-out"
-            
+                    className="bg-gradient-to-b from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 text-cyberpunk-text hover:from-cyberpunk-bg2 hover:to-cyberpunk-bg1 hover:text-black hover:bg-opacity-80 rounded-md px-4 py-2 transition duration-300 ease-in-out"
+
                 >
                     Create Playlist
                 </button>
-                
+
                 <button
                     onClick={() => setAddVideoModalOpen(true)}
                     className="w-20 md:w-28 h-8 md:h-10 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white rounded-none shadow-md"
@@ -405,11 +427,21 @@ function PlaylistList() {
                         ))}
                     </select>
                 </div>
+                {loading ? ( // Conditional rendering based on the loading state
+                <div>Loading...</div>
+            ) : (
+                <button
+                    onClick={handleVideoUpload}
+                    className="bg-cyan-400 hover:bg-blue-700 text-white py-2 px-4 rounded"
+                >
+                    Upload Video
+                </button>
+            )}
                 <button
                     onClick={handleAddVideo}
-                    className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
+                    className="bg-blue-600 hover:bg-cyan-400 text-white py-2 px-4 rounded"
                 >
-                    Add Video
+                    Submit
                 </button>
                 <button
                     onClick={() => setAddVideoModalOpen(false)}
