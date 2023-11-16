@@ -60,7 +60,7 @@ function UserHome() {
   const [backgroundImage, setBackgroundImage] = useState('');
   const [mentorApproved, setMentorApproved] = useState(false);
   const [socket, setSocket] = useState(null);
-  const [isDecoded, setDecode] = useState(false)
+  const [isDecoded, setDecode] = useState(true)
   const buttons = [
     { text: isDecoded ? ' Premium Member':'Become a Premium Member', imageUrl: pbg, linkTo:isDecoded? '/subscription':'/plandetail'},
     { text: 'Become a Premium Member', imageUrl: pbg, linkTo: '/subscription' },
