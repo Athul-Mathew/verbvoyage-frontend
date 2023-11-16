@@ -18,7 +18,7 @@ const PremiumPage = () => {
   });
 
   return (
-    <animated.div style={fadeIn} className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-yellow-300 to-yellow-500">
+    <animated.div style={fadeIn} className="min-h-screen flex flex-col items-center justify-center bg-black">
       <div className="text-white text-center mb-8">
         <div className="text-4xl font-bold mb-4">You are already a Premium User!</div>
         <button

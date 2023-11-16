@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const NotPremiumPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-yellow-400 to-yellow-600">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-black">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-white mb-4">You Are Not a Premium User</h1>
         <p className="text-white mb-4">Upgrade to a premium account to unlock exclusive features. if you are already a premium user please logout your current section and login again And refresh it </p>
