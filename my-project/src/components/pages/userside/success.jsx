@@ -20,12 +20,12 @@ const PremiumPage = () => {
   return (
     <animated.div style={fadeIn} className="min-h-screen flex flex-col items-center justify-center bg-black">
       <div className="text-white text-center mb-8">
-        <div className="text-4xl font-bold mb-4">You are already a Premium User!</div>
+        <div className="text-4xl font-bold mb-4">You are already a Premium User! Please logout to activate your membership</div>
         <button
           className="bg-white text-yellow-500 px-6 py-3 rounded-full font-bold hover:bg-yellow-500 hover:text-white transition duration-300"
           onClick={exploreMore}
         >
-          Explore More
+          Logout 
         </button>
       </div>
       <div>
