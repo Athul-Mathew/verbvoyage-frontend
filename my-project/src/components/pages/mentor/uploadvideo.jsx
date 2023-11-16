@@ -4,6 +4,7 @@ import axios from 'axios';
 import { getLocal } from '../../../actions/auth';
 import jwtDecode from 'jwt-decode';
 import { BACKEND_BASE_URL } from '../../../utils/Config';
+import { Link } from 'react-router-dom';
 
 function PlaylistList() {
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
@@ -134,6 +135,7 @@ function PlaylistList() {
 
     return (
         <div className="flex bg-gray-900 min-h-screen text-white font-sans">
+            
             {/* Sidebar */}
             <div className="w-1/4 bg-gray-800 p-4">
                 <div className="text-2xl font-bold mb-4 text-gray-300">Video Manager</div>

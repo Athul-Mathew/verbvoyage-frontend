@@ -7,6 +7,7 @@ import { getLocal } from '../../../actions/auth';
 import jwtDecode from 'jwt-decode';
 import { storage } from '../../../firebase/config';
 import { ref, uploadBytes, getDownloadURL, getStorage, deleteObject } from 'firebase/storage'
+import { Link } from 'react-router-dom';
 
 function PlaylistList() {
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
@@ -199,12 +200,16 @@ function PlaylistList() {
                 });
         }
     };
-
+    const [toggle,setToggle]= useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [videoUpload, setVideoUpload] = useState(null)
     const [videoUploadButton, setVideoUploadButton] = useState(false)
     const [videoUrl, setVideoUrl] = useState('')
 
-
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        navigate('/');
+      };
     const handleVideoUpload = async () => {
         console.log("Its being called here")
         setbLoading(true)
@@ -219,11 +224,101 @@ function PlaylistList() {
     }
     return (
 
-        <div className={`bg-gradient-to-b from-purple-600 to-blue-900 text-white min-h-screen relative" ${isModalOpen ? 'filter blur-md' : ''} transition-all duration-300 ease-in-out`}>
+        <div className={`bg-black text-cyan-400 min-h-screen relative ${isModalOpen ? 'filter blur-md' : ''} transition-all duration-300 ease-in-out`} style={{ backgroundImage: 'url("https://www.bing.com/th/id/OGC.1069a7113c399a9a9ca3185769c59134?pid=1.7&rurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2fq0fI9WdWkgjF6%2fsource.gif&ehk=Nm6RMZAYd5%2bp3fQg3sjwghGWK%2f%2fZR03wc3QZ5gitBFo%3d")' }}>
+            <nav className="border-gray-200 bg-black  dark:border-gray-700">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="#" className="flex items-center">
+            {/* <img src={logo} className="h-8 mr-3" alt="verbvoyage Logo" /> */}
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-cyan-400">
+              Verb Voyage
+            </span>
+          </a>
+          <button
+            data-collapse-toggle="navbar-solid-bg"
+            type="button"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-solid-bg"
+            aria-expanded="false"
+            onClick={()=>setToggle(!toggle)}
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+          {toggle && (
+          <div className="md:hidden w-full block" id="navbar-solid-bg">
+            <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+            <Link to="mentor/mentor-home">
+              
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-cyan bg-black rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+                  aria-current="page"
+                >
+                  Home
+                </a>
+              </li>
+              </Link>
+
+              
+              <li>
+                <a
+                  href="#"
+                  onClick={handleLogout}
+                  className="block py-2 pl-3 pr-4 text-cyan-400 rounded hover-bg-gray-100 md:hover-bg-transparent md:border-0 md:hover-text-blue-700 md:p-0 dark-text-cyan-400 md:dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-cyan-400 md:dark-hover-bg-transparent"
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+          )}
+          <div className="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+            <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+            <Link to="/mentor/mentor-home">
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-cyan bg-black rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
+                  aria-current="page"
+                >
+                  Home
+                </a>
+              </li>
+              </Link>
+
+              
+              <li>
+                <a
+                  href="#"
+                  onClick={handleLogout}
+                  className="block py-2 pl-3 pr-4 text-cyan-400 rounded hover-bg-gray-100 md:hover-bg-transparent md:border-0 md:hover-text-blue-700 md:p-0 dark-text-cyan-400 md:dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-cyan-400 md:dark-hover-bg-transparent"
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
             <div className="flex flex-col md:flex-row">
-                <div className={`w-full md:w-1/4 bg-gradient-to-r from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 p-4 text-white`}>
-                    <div className="text-2xl font-bold mb-4">Video Manager</div>
-                    <div className="space-y-4">
+                <div className={`w-full md:w-1/4 bg-gradient-to-r from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 p-4 text-cyan-400`}>
+                    <div className="text-2xl font-bold mb-4 bg-black">Video Manager</div>
+                    <div className="space-y-4 bg-black">
                         {playlistsData.map((playlist, index) => (
                             <div
                                 key={`playlist-${playlist.id}-${index}`}
@@ -264,7 +359,7 @@ function PlaylistList() {
                                     {selectedPlaylist.videos.map((video) => (
                                         <div
                                             key={`video-${video.id}`}
-                                            className="bg-gradient-to-r from-gray-800 via-blue-900 to-green-900 p-4 rounded-lg overflow-hidden shadow-lg text-white"
+                                            className="bg-gradient-to-r from-gray-800 via-blue-900 to-green-900 p-4 rounded-lg overflow-hidden shadow-lg text-cyan-400"
 
                                         >
                                             <img
@@ -277,7 +372,7 @@ function PlaylistList() {
                                                 <div className="text-lg font-semibold">{video.title}</div>
                                                 <button
                                                     onClick={() => handleVideoDelete(video.id)}
-                                                    className="text-white bg-red-500 px-2 py-1 rounded"
+                                                    className="text-cyan-400 bg-red-500 px-2 py-1 rounded"
                                                 >
                                                     Delete Video
                                                 </button>
@@ -290,7 +385,7 @@ function PlaylistList() {
                             )}
                         </div>
                     ) : (
-                        <p className="text-black border-l-0">Select a playlist to view videos.</p>
+                        <p className="block text-sm font-medium text-cyan-400">Select a playlist to view videos.</p>
                     )}
                 </div>
             </div>
@@ -299,7 +394,8 @@ function PlaylistList() {
             <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
                 <button
                     onClick={() => setCreatePlaylistModalOpen(true)}
-                    className="bg-gradient-to-b from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 text-cyberpunk-text hover:from-cyberpunk-bg2 hover:to-cyberpunk-bg1 hover:text-black hover:bg-opacity-80 rounded-md px-4 py-2 transition duration-300 ease-in-out"
+                                        className="w-20 md:w-28 h-8 md:h-10 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-cyan-400 rounded-none shadow-md"
+
 
                 >
                     Create Playlist
@@ -307,7 +403,7 @@ function PlaylistList() {
 
                 <button
                     onClick={() => setAddVideoModalOpen(true)}
-                    className="w-20 md:w-28 h-8 md:h-10 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white rounded-none shadow-md"
+                    className="w-20 md:w-28 h-8 md:h-10 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-cyan-400 rounded-none shadow-md"
                 >
                     Add Video
                 </button>
@@ -321,12 +417,12 @@ function PlaylistList() {
                 onAfterOpen={openModal}  // Call the openModal function when the modal opens
                 onAfterClose={closeModal}  // Call the closeModal function when the modal closes
                 contentLabel="Create Playlist"
-                className="Modal max-w-md mx-auto mt-20 p-6 bg-yellow-400 rounded shadow-lg"
+                className="Modal max-w-md mx-auto mt-20 p-6 bg-black rounded shadow-lg"
                 overlayClassName="Overlay fixed top-0 left-0 w-full h-full "
             >
-                <h2 className="text-2xl font-bold mb-4 text-gray-700">Create Playlist</h2>
+                <h2 className="text-2xl font-bold mb-4 text-cyan-400">Create Playlist</h2>
                 <div className="mb-4">
-                    <label htmlFor="playlistTitle" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="playlistTitle" className="block text-sm font-medium text-cyan-400">
                         Title
                     </label>
                     <input
@@ -338,7 +434,7 @@ function PlaylistList() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="premium" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="premium" className="block text-sm font-medium text-cyan-400">
                         Premium
                     </label>
                     <input
@@ -351,13 +447,13 @@ function PlaylistList() {
                 </div>
                 <button
                     onClick={handleCreatePlaylist}
-                    className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded"
+                    className="bg-green-600 hover:bg-green-700 text-cyan-400 py-2 px-4 rounded"
                 >
                     Create Playlist
                 </button>
                 <button
                     onClick={() => setCreatePlaylistModalOpen(false)}
-                    className="ml-2 text-gray-500 hover:text-gray-700"
+                    className="ml-2 text-gray-500 hover:text-cyan-400"
                 >
                     Cancel
                 </button>
@@ -370,12 +466,12 @@ function PlaylistList() {
                 onAfterOpen={openModal}  // Call the openModal function when the modal opens
                 onAfterClose={closeModal}  // Call the closeModal function when the modal closes
                 contentLabel="Add Video"
-                className="Modal max-w-md mx-auto mt-20 p-6 bg-yellow-400 rounded shadow-lg"
+                className="Modal max-w-md mx-auto mt-20 p-6 bg-black rounded shadow-lg"
                 overlayClassName="Overlay fixed top-0 left-0 w-full h-full"
             >
-                <h2 className="text-2xl font-bold mb-4 text-gray-700">Add Video</h2>
+                <h2 className="text-2xl font-bold mb-4 text-cyan-400">Add Video</h2>
                 <div className="mb-4">
-                    <label htmlFor="videoTitle" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="videoTitle" className="block text-sm font-medium text-cyan-400">
                         Title
                     </label>
                     <input
@@ -387,7 +483,7 @@ function PlaylistList() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="videoFile" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="videoFile" className="block text-sm font-medium text-cyan-400">
                         Video File
                     </label>
                     <input
@@ -398,7 +494,7 @@ function PlaylistList() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="videoThumbnail" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="videoThumbnail" className="block text-sm font-medium text-cyan-400">
                         Thumbnail Image
                     </label>
                     <input
@@ -410,7 +506,7 @@ function PlaylistList() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="playlistSelect" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="playlistSelect" className="block text-sm font-medium text-cyan-400">
                         Select Playlist
                     </label>
                     <select
@@ -433,20 +529,20 @@ function PlaylistList() {
             ) : (
                 <button
                     onClick={handleVideoUpload}
-                    className="bg-cyan-400 hover:bg-blue-700 text-white py-2 px-4 rounded"
+                    className="bg-cyan-400 hover:bg-blue-700 text-cyan-400 py-2 px-4 rounded"
                 >
                     Upload Video
                 </button>
             )}
                 <button
                     onClick={handleAddVideo}
-                    className="bg-blue-600 hover:bg-cyan-400 text-white py-2 px-4 rounded"
+                    className="bg-blue-600 hover:bg-cyan-400 text-cyan-400 py-2 px-4 rounded"
                 >
                     Submit
                 </button>
                 <button
                     onClick={() => setAddVideoModalOpen(false)}
-                    className="ml-2 text-gray-500 hover:text-gray-700"
+                    className="ml-2 text-gray-500 hover:text-cyan-400"
                 >
                     Cancel
                 </button>
