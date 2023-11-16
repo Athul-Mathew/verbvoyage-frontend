@@ -22,6 +22,7 @@ import NotPremiumPage from '../pages/userside/notpremium';
 import { useEffect } from 'react';
 import Course from '../pages/userside/course'
 import Check from '../pages/userside/check'
+import Plan from '../pages/userside/plandetail'
 function UserRoutes() {
   const token = getLocal('authToken');
   const [premium ,setPremium] = useState(false)
@@ -52,6 +53,7 @@ function UserRoutes() {
           <Route path="/mentor-list" element={ premium?< MentorList />:<Navigate to="/notpremium" />} />
           <Route path="/become-mentor" element={<BecomeMentor/>} />
           <Route path="/subscription" element={premium?<Navigate to='/success'/>: <SubscriptionPage />} />
+          <Route path="/plandetail" element={<Plan/>} />
           
         
           <Route path='/success' element={<Success/>} />

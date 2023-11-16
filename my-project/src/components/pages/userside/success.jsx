@@ -30,7 +30,7 @@ const PremiumPage = () => {
         </button>
       </div>
       <div>
-        <img src="https://gifsec.com/wp-content/uploads/2022/09/congrats-gif-9.gif" alt="Premium GIF" className="w-64 h-64 rounded-full shadow-lg" />
+        <img src="https://www.bing.com/th/id/OGC.81e255e0ceeca98084787662c4f7814c?pid=1.7&rurl=http%3a%2f%2f38.media.tumblr.com%2f297947c71204948483def02f60a9b366%2ftumblr_mlh0ipVnQq1rdnvweo1_500.gif&ehk=4vjFoR5sds6%2fLw7baeM6FaR33xDXxRRVDMnNwYJqFd4%3d" alt="Premium GIF" className="w-64 h-64 rounded-full shadow-lg" />
       </div>
     </animated.div>
   );
