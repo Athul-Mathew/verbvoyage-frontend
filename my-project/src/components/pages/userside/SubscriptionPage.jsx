@@ -51,6 +51,7 @@ function VipPay() {
     if(decoded.is_premium){
       
       setPremium(true)
+      navigate('/success')
     }
     if (premium == true) {
       setPremium(true)
