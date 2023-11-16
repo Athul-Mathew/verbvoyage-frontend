@@ -26,7 +26,7 @@ const PremiumPage = () => {
           className="bg-white text-yellow-500 px-6 py-3 rounded-full font-bold hover:bg-yellow-500 hover:text-white transition duration-300"
           onClick={exploreMore}
         >
-          Logout 
+          Home 
         </button>
       </div>
       <div>
