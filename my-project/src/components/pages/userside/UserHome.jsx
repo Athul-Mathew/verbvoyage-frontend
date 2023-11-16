@@ -60,8 +60,9 @@ function UserHome() {
   const [backgroundImage, setBackgroundImage] = useState('');
   const [mentorApproved, setMentorApproved] = useState(false);
   const [socket, setSocket] = useState(null);
-
+  const [isDecoded, setDecode] = useState(false)
   const buttons = [
+    { text: isDecoded ? ' Premium Member':'Become a Premium Member', imageUrl: pbg, linkTo:isDecoded? '/subscription':'/plandetail'},
     { text: 'Become a Premium Member', imageUrl: pbg, linkTo: '/subscription' },
     { text: 'Become a Mentor', imageUrl: mbg, linkTo: '/become-mentor' },
     { text: 'Mentors', imageUrl: mebg, linkTo: '/mentor-list' },
@@ -97,6 +98,9 @@ function UserHome() {
         navigate('/mentor/mentor-home');
         toast.success('Logged in successfully', { duration: 1000 });
       } else {
+        if (decoded.is_premium){
+          setDecode(true)
+        }
         navigate('/userhome');
       }
     }
