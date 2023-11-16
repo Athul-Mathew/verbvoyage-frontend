@@ -89,7 +89,7 @@ const ForgotPassword = () => {
             "verbvoyage, Unlock Your knowledge"
           </h4>
           <img
-            src='https://idc.edu/wp-content/uploads/2018/02/8-Ways-to-Learn-English-Faster.jpg'
+            src='https://www.bing.com/th/id/OGC.f841ac2befaedda240c55a06b23b33ec?pid=1.7&rurl=https%3a%2f%2fmiro.medium.com%2fmax%2f1600%2f0*C-cPP9D2MIyeexAT.gif&ehk=MovqtbBPxikWiRUkqLOAmqYT1WSb85bwZvNSwzysO3c%3d'
             alt="Company Logo"
             className="w-96 h-96 object-contain mb-4"
           />
