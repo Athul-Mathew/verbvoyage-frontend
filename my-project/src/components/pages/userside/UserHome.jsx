@@ -60,7 +60,7 @@ function UserHome() {
   const [backgroundImage, setBackgroundImage] = useState('');
   const [mentorApproved, setMentorApproved] = useState(false);
   const [socket, setSocket] = useState(null);
-  const im="https://www.bing.com/th/id/OGC.18d113d0ad4825dd15bb818371f260ea?pid=1.7&rurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2f2uFo6TsB4NvNe%2f200.gif&ehk=kHoXB4iSaIFWzHzSOwfx%2flOuEEembXcpPwDiHI2fYM8%3d"
+
   const buttons = [
     { text: 'Become a Premium Member', imageUrl: pbg, linkTo: '/subscription' },
     { text: 'Become a Mentor', imageUrl: mbg, linkTo: '/become-mentor' },
@@ -97,15 +97,6 @@ function UserHome() {
         navigate('/mentor/mentor-home');
         toast.success('Logged in successfully', { duration: 1000 });
       } else {
-        if (decoded.is_premium){
-          const updatedButtons = buttons.map(button => {
-            if (button.text === 'Become a Premium Member' && isPremiumMember) {
-              return { text: 'You are a Premium Member', imageUrl: im, linkTo: '/plandetail' };
-            }
-            return button;
-          });
-          setButtons(updatedButtons);
-        }
         navigate('/userhome');
       }
     }
