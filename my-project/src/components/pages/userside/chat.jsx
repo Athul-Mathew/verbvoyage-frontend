@@ -70,7 +70,7 @@ function UserComponent() {
         });
       };
     }
-  }, [socket]);
+  }, [socket,messages]);
 
   useEffect(() => {
     const createSocket = async () => {
