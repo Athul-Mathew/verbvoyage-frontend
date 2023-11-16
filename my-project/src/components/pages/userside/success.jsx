@@ -8,7 +8,11 @@ const PremiumPage = () => {
   const navigate = useNavigate();
 
   const exploreMore = () => {
-    navigate('/userhome');
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('rzp_device_id');
+    localStorage.removeItem('userJWT');
+    localStorage.removeItem('rzp_checkout_anon_id');
+    navigate('/login');
   };
 
   const fadeIn = useSpring({
