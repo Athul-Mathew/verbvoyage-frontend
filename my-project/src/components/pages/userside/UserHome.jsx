@@ -62,8 +62,8 @@ function UserHome() {
   const [socket, setSocket] = useState(null);
   const [isDecoded, setDecode] = useState(true)
   const buttons = [
-    { text: isDecoded ? ' Premium Member':'Become a Premium Member', imageUrl: pbg, linkTo:isDecoded? '/subscription':'/plandetail'},
-    { text: 'Become a Premium Member', imageUrl: pbg, linkTo: '/subscription' },
+    
+    
     { text: 'Become a Mentor', imageUrl: mbg, linkTo: '/become-mentor' },
     { text: 'Mentors', imageUrl: mebg, linkTo: '/mentor-list' },
     { text: 'Chat With Random Users', imageUrl: userbg, linkTo: '/chat' },
