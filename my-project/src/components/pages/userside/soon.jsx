@@ -22,9 +22,11 @@ function Soon() {
         Exciting content is on the way. Stay tuned!
       </p>
       <div className="flex space-x-4">
+      <Link to={'/userhome'}>
         <button className="bg-red-500 text-cyan-400 px-6 py-2 rounded-full">
           Notify Me
         </button>
+        </Link>
         <Link to={'/userhome'}>
         <button className="border border-cyan-400 text-cyan-400 px-6 py-2 rounded-full transition duration-300 ease-in-out hover:bg-cyan-400 hover:text-black">
           Remind Me Later
