@@ -48,37 +48,36 @@ const CourseDetail = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (isLoading) {
+  if (isLoading || !course) {
     return <p>Loading...</p>;
   }
+
   return (
-    <div className="bg-gradient-to-b from-cyberpunk-bg1 via-cyberpunk-bg2 to-cyberpunk-bg3 text-cyberpunk-text min-h-screen p-4 md:p-8">
-      <div className="container mx-auto mt-8">
-        <h2 className="text-4xl font-bold text-center my-6 text-cyberpunk-title">{course.title}</h2>
+    <div className="container mx-auto mt-8">
+      <h2 className="text-4xl font-bold text-center my-6">{course.title}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-cyberpunk-bg text-cyberpunk-text rounded-lg p-6 shadow-lg">
-            <img
-              className="w-full h-64 object-cover mb-4 rounded-lg"
-              src={course.image}
-              alt={course.title}
-            />
-            <p className="text-lg mb-4">{course.description}</p>
-            <span className={`text-sm font-bold ${course.premium ? 'text-yellow-500' : 'text-green-600'}`}>
-              {course.premium ? 'Premium' : 'Free'}
-            </span>
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-white text-gray-800 rounded-lg p-6 shadow-lg">
+          <img
+            className="w-full h-64 object-cover mb-4 rounded-lg"
+            src={course.image}
+            alt={course.title}
+          />
+          <p className="text-lg mb-4">{course.description}</p>
+          <span className={`text-sm font-bold ${course.premium ? 'text-yellow-500' : 'text-green-600'}`}>
+            {course.premium ? 'Premium' : 'Free'}
+          </span>
+        </div>
 
-          <div className="bg-cyberpunk-bg text-cyberpunk-text rounded-lg p-6 shadow-lg">
-            <h3 className="text-2xl font-semibold mb-4">Videos</h3>
-            <ul>
-              {videos.map((video) => (
-                <li key={video.id} className="text-lg mb-2">
-                  {video.title}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="bg-white text-gray-800 rounded-lg p-6 shadow-lg">
+          <h3 className="text-2xl font-semibold mb-4">Videos</h3>
+          <ul>
+            {videos.map((video) => (
+              <li key={video.id} className="text-lg mb-2">
+                {video.title}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
