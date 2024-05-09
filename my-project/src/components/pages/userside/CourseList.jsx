@@ -33,7 +33,7 @@ const CourseList = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8 bg-yellow-400 p-8 rounded-lg">
+    <div className="container mx-auto mt-8 bg-cyan-400 p-8 rounded-lg">
       <h2 className="text-4xl font-bold text-black mb-8">Top Courses</h2>
 
       {isLoading ? (
@@ -43,7 +43,7 @@ const CourseList = () => {
           {courses.map((course) => (
             <div
               key={course.id}
-              className={`bg-white p-6 rounded-lg shadow-md cursor-pointer transition duration-300 ${
+              className={`bg-cyan p-6 rounded-lg shadow-md cursor-pointer transition duration-300 ${
                 isEnrolled && selectedPlaylistId !== course.id ? 'opacity-50' : ''
               }`}
               onClick={() => handleEnroll(course.id)}
@@ -64,7 +64,7 @@ const CourseList = () => {
               <h3 className="text-lg text-black font-semibold mb-2">{course.title}</h3>
               <div className="flex justify-between items-center">
                 {course.premium ? (
-                  <span className="text-sm font-bold text-yellow-500">Premium</span>
+                  <span className="text-sm font-bold text-cyan-500">Premium</span>
                 ) : (
                   <span className="text-sm font-bold text-green-600">Free</span>
                 )}
