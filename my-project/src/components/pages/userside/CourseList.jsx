@@ -33,6 +33,7 @@ const CourseList = () => {
   };
 
   return (
+    <div className='bg-cyan'>
     <div className="container mx-auto mt-8 bg-cyan-400 p-8 rounded-lg">
       <h2 className="text-4xl font-bold text-black mb-8">Top Courses</h2>
 
@@ -81,6 +82,7 @@ const CourseList = () => {
           setSelectedPlaylistId={setSelectedPlaylistId}
         />
       )}
+    </div>
     </div>
   );
 };
