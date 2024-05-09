@@ -69,7 +69,7 @@ const ProfilePage = () => {
   
 console.log(name)
   return (
-    <div className="max-w-2xl mx-auto mt-8 p-6 bg-yellow-500 shadow-md rounded-md ">
+    <div className="max-w-2xl mx-auto mt-8 p-6 bg-cyan-500 shadow-md rounded-md ">
       <div className="flex flex-col items-center mb-8">
         <img
           className="w-32 h-32 rounded-full mb-4 "
@@ -78,7 +78,7 @@ console.log(name)
         />
         <h1 className="text-3xl font-bold text-white">{name.name}'s Profile</h1>
         <button
-          className="bg-black hover:bg-yellow-500 text-white hover:text-black text-lg py-2 px-4 rounded-md mt-2"
+          className="bg-black hover:bg-cyan-500 text-white hover:text-black text-lg py-2 px-4 rounded-md mt-2"
           onClick={handleEditProfile}
         >
           Edit Profile
@@ -126,7 +126,7 @@ console.log(name)
             </div>
             <button
               onClick={handleSaveProfile}
-              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               Save
             </button>

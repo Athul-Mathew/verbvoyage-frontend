@@ -1,6 +1,8 @@
 import React from 'react';
 
+
 function Soon() {
+  
   return (
     <div className="relative flex flex-col items-center justify-center h-screen bg-black text-cyan-400"
     style={{
@@ -23,9 +25,11 @@ function Soon() {
         <button className="bg-red-500 text-cyan-400 px-6 py-2 rounded-full">
           Notify Me
         </button>
+        <Link to={'/userhome'}>
         <button className="border border-cyan-400 text-cyan-400 px-6 py-2 rounded-full transition duration-300 ease-in-out hover:bg-cyan-400 hover:text-black">
           Remind Me Later
         </button>
+        </Link>
       </div>
       <footer className="text-cyan-100 text-center py-8 mt-auto">
         <p>&copy; 2023 VerbVoyage. All rights reserved.</p>

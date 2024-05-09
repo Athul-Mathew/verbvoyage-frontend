@@ -69,6 +69,7 @@ function UserHome() {
     { text: 'Chat With Random Users', imageUrl: userbg, linkTo: '/chat' },
     { text: 'Exams', imageUrl: exambg, linkTo: '/soon' },
     { text: 'Courses', imageUrl: coursebg, linkTo: '/course' },
+    { text: 'Subscription', imageUrl: pbg, linkTo: '/subscription' },
   ];
 
   const navigate = useNavigate();
