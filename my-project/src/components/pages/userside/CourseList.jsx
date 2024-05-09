@@ -33,7 +33,7 @@ const CourseList = () => {
   };
 
   return (
-    <div className='bg-cyan'>
+    <div className="bg-cyan" style={{ backgroundImage: "url('https://www.google.com/imgres?q=gif%20blue%20&imgurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F7e%2Fc7%2F0b%2F7ec70b9ed2f3d8194bbb437a348e82d7.gif&imgrefurl=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F319826011019318047%2F&docid=qJTSFRRTGBd3xM&tbnid=Bb5m2EFwXF1_SM&vet=12ahUKEwiQ4OHEkICGAxU3amwGHQlZCIoQM3oECEkQAA..i&w=500&h=281&hcb=2&ved=2ahUKEwiQ4OHEkICGAxU3amwGHQlZCIoQM3oECEkQAA')" }}>
     <div className="container mx-auto mt-8 bg-cyan-400 p-8 rounded-lg">
       <h2 className="text-4xl font-bold text-black mb-8">Top Courses</h2>
 
