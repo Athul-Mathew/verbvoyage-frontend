@@ -53,44 +53,34 @@ const CourseDetail = () => {
   }
 
   return (
-//     <div className="container mx-auto mt-8">
-//   <h2 className="text-4xl font-bold text-center my-6 text-cyberpunk-title">{course.title}</h2>
+    <div className="container mx-auto mt-8 bg-cyan-400">
+  <h2 className="text-4xl font-bold text-center my-6 text-cyberpunk-title">{course.title}</h2>
 
-//   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//     <div className="bg-cyberpunk-bg text-cyberpunk-text rounded-lg p-6 shadow-lg">
-//       <img
-//         className="w-full h-64 object-cover mb-4 rounded-lg"
-//         src={course.image}
-//         alt={course.title}
-//       />
-//       <p className="text-lg mb-4">{course.description}</p>
-//       <span className={`text-sm font-bold ${course.premium ? 'text-yellow-500' : 'text-green-600'}`}>
-//         {course.premium ? 'Premium' : 'Free'}
-//       </span>
-//     </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="bg-cyberpunk-bg text-cyberpunk-text rounded-lg p-6 shadow-lg">
+      <img
+        className="w-full h-64 object-cover mb-4 rounded-lg"
+        src={course.image}
+        alt={course.title}
+      />
+      <p className="text-lg mb-4">{course.description}</p>
+      <span className={`text-sm font-bold ${course.premium ? 'text-black-500' : 'text-green-600'}`}>
+        {course.premium ? 'Premium' : 'Free'}
+      </span>
+    </div>
 
-//     <div className="bg-cyberpunk-bg text-cyberpunk-text rounded-lg p-6 shadow-lg">
-//       <h3 className="text-2xl font-semibold mb-4">Videos</h3>
-//       <ul>
-//         {videos.map((video) => (
-//           <li key={video.id} className="text-lg mb-2">
-//             {video.title}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   </div>
-// </div>
-<div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-4">Courses</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {videos.map((video) => (
-         <li key={video.id} className="text-lg mb-2">
+    <div className="bg-cyberpunk-bg text-cyberpunk-text rounded-lg p-6 shadow-lg">
+      <h3 className="text-2xl font-semibold mb-4">Videos</h3>
+      <ul>
+        {videos.map((video) => (
+          <li key={video.id} className="text-lg mb-2">
             {video.title}
           </li>
-         ))}
-      </div>
+        ))}
+      </ul>
     </div>
+  </div>
+</div>
 
   );
 };
